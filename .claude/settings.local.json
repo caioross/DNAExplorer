@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk -F, '$4==\"--\"')",
+      "Bash(awk -F, '$2==\"Y\"')",
+      "Bash(awk -F, '$2==\"MT\"')",
+      "Bash(awk -F, '$4~/^\\(II|DD|DI|ID\\)$/')",
+      "Bash(awk -F, '{gsub\\(/\"/,\"\"\\); if\\($4==\"--\"\\) print}')",
+      "Bash(awk -F, '{gsub\\(/\"/,\"\"\\); if\\($2==\"Y\"\\) print}')",
+      "Bash(awk -F, '{gsub\\(/\"/,\"\"\\); if\\($2==\"MT\"\\) print}')",
+      "Bash(awk -F, '{gsub\\(/\"/,\"\"\\); if\\($4~/^\\(II|DD|DI|ID\\)$/\\) print}')",
+      "Bash(awk -F, '{print $1}')",
+      "Bash(awk -F, '{gsub\\(/\"/,\"\"\\); print $1}')",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} — %{size_download}b — %{time_total}s\\\\n\" http://localhost:3737/)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3737__TRACKED_VAR__)",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" \"http://localhost:3737/api/annotations/rs12913832\")",
+      "Bash(curl -s \"http://localhost:3737/\")",
+      "Bash(curl -s \"http://localhost:3737/viewer/helix\")",
+      "Bash(curl -s -o /dev/null -w \"landing: HTTP %{http_code}\\\\n\" http://localhost:3737/)",
+      "Bash(curl -s -o /dev/null -w \"viewer: HTTP %{http_code}\\\\n\" http://localhost:3737/viewer)",
+      "Bash(curl -s -o /dev/null -w \"demo CSV: HTTP %{http_code} · %{size_download}b\\\\n\" http://localhost:3737/api/demo/555308.csv)",
+      "Bash(curl -s -o /dev/null -w \"demo TXT: HTTP %{http_code} · %{size_download}b\\\\n\" http://localhost:3737/api/demo/555308_26293.txt)",
+      "Bash(curl -s -o /dev/null -w \"landing recompile: HTTP %{http_code}\\\\n\" http://localhost:3737/)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3737/viewer)",
+      "Bash(curl -s -o /dev/null -w \"ROOT %{http_code}\\\\n\" http://localhost:3737/)",
+      "Bash(curl -s -o /dev/null -w \"VIEWER %{http_code}\\\\n\" http://localhost:3737/viewer)",
+      "Bash(curl -s -o /dev/null -w \"CATALOG %{http_code}\\\\n\" http://localhost:3737/viewer/catalog)",
+      "Bash(curl -s -o /dev/null -w \"CHROMS %{http_code}\\\\n\" http://localhost:3737/viewer/chromosomes)",
+      "Bash(curl -s -o /dev/null -w \"SEARCH %{http_code}\\\\n\" http://localhost:3737/viewer/search)",
+      "Bash(curl -s -o /dev/null -w \"ROOT %{http_code}\\\\nVIEWER %{http_code}\\\\n\" http://localhost:3737/viewer)",
+      "Bash(echo \"EXIT=$?\")"
+    ]
+  }
+}

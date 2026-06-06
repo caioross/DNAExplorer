@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  [data-theme="dark"] {
+    --c-bg: 5 7 14;
+    --c-bg-soft: 11 15 26;
+    --c-bg-card: 17 22 36;
+    --c-bg-elevated: 21 27 45;
+    --c-border: 31 39 57;
+    --c-border-strong: 42 51 76;
+    --c-fg: 230 236 245;
+    --c-fg-dim: 148 163 184;
+    --c-fg-muted: 100 116 139;
+    --c-accent: 34 211 238;
+    --c-accent-deep: 8 145 178;
+    --c-accent-soft: 22 78 99;
+    color-scheme: dark;
+  }
+  [data-theme="light"] {
+    --c-bg: 245 247 252;
+    --c-bg-soft: 235 240 248;
+    --c-bg-card: 255 255 255;
+    --c-bg-elevated: 248 250 254;
+    --c-border: 222 229 242;
+    --c-border-strong: 198 209 229;
+    --c-fg: 15 23 42;
+    --c-fg-dim: 71 85 105;
+    --c-fg-muted: 100 116 139;
+    --c-accent: 14 165 233;
+    --c-accent-deep: 3 105 161;
+    --c-accent-soft: 186 230 253;
+    color-scheme: light;
+  }
+  html {
+    transition: background-color .3s ease, color .3s ease;
+  }
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgb(var(--c-accent) / 0.10), transparent 45%),
+      radial-gradient(circle at 80% 90%, rgba(139, 92, 246, 0.08), transparent 40%);
+    background-attachment: fixed;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--c-bg));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-border));
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--c-border-strong));
+  }
+  code, pre, .mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+  ::selection {
+    background: rgb(var(--c-accent) / 0.35);
+    color: rgb(var(--c-fg));
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-card border border-border rounded-xl;
+  }
+  .card-elevated {
+    @apply bg-bg-elevated border border-border-strong rounded-xl;
+  }
+  .card-hover {
+    @apply transition-all hover:border-accent/50 hover:shadow-glow-soft;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-all;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-bg hover:bg-accent-deep hover:text-fg shadow-glow;
+  }
+  .btn-ghost {
+    @apply btn text-fg-dim hover:text-fg hover:bg-bg-elevated;
+  }
+  .btn-outline {
+    @apply btn border border-border-strong text-fg-dim hover:text-fg hover:border-accent hover:bg-accent/5;
+  }
+  .input {
+    @apply bg-bg-soft border border-border rounded-lg px-3 py-2 text-fg placeholder:text-fg-muted focus:border-accent focus:outline-none transition-colors;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-bg-elevated border border-border text-xs font-mono;
+  }
+  .grad-text {
+    @apply bg-gradient-to-r from-accent via-cyan-300 to-violet-400 bg-clip-text text-transparent;
+  }
+  .ring-glow {
+    box-shadow: 0 0 0 1px rgb(var(--c-accent) / 0.35), 0 0 24px -2px rgb(var(--c-accent) / 0.45);
+  }
+  .scroll-fade {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 4%, black 96%, transparent 100%);
+  }
+}
+
+.helix-glow {
+  filter: drop-shadow(0 0 12px rgb(var(--c-accent) / 0.45));
+}
+
+.noise-bg {
+  position: relative;
+}
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, rgb(var(--c-fg-dim)) 0%, rgb(var(--c-fg)) 50%, rgb(var(--c-fg-dim)) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Theme-specific tweaks */
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgb(14, 165, 233, 0.08), transparent 45%),
+    radial-gradient(circle at 80% 90%, rgba(139, 92, 246, 0.05), transparent 40%);
+}
